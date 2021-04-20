@@ -12,6 +12,7 @@ import model.Research;
 
 
 public class ReasearchManagement {
+
 	
 	Research researchObj = new Research();
 	@GET
@@ -21,7 +22,6 @@ public class ReasearchManagement {
 	 {
 		return researchObj.readResearch();
 	 } 
-	
 	
 
 }
