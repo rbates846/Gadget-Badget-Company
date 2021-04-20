@@ -9,9 +9,16 @@
 </servlet>
 <servlet-mapping>
  <servlet-name>Jersey Web Application</servlet-name>
+<<<<<<< HEAD
 <url-pattern>/ProjectService/*</url-pattern>
 
 
+=======
+
+ <url-pattern>/ProjectService/*</url-pattern>
+
+ <url-pattern>/ResearchService/*</url-pattern>
+>>>>>>> branch 'master' of https://github.com/rbates846/Gadget-Badget-Company.git
 
 </servlet-mapping>
 
