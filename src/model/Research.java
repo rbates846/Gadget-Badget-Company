@@ -5,6 +5,7 @@ import java.sql.*;
 public class Research {
 	
 	//A common method to connect to the DB
+	
 	private Connection connect()
 	 {
 	 Connection con = null;
@@ -13,13 +14,14 @@ public class Research {
 	 Class.forName("com.mysql.jdbc.Driver");
 
 	 //Provide the correct details: DBServer/DBName, username, password
-	 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "");
+	 
+	 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadgetdb", "root", "");
 	 }
 	 catch (Exception e)
 	 {e.printStackTrace();}
 	 return con;
 	 }
-	public String insertItem(String code, String name, String price, String desc)
+	public String insertResearch( String name, String institute, String duration, String description)
 	 {
 	 String output = "";
 	 try
@@ -27,16 +29,21 @@ public class Research {
 	 Connection con = connect();
 	 if (con == null)
 	 {return "Error while connecting to the database for inserting."; }
+	 
 	 // create a prepared statement
-	 String query = " insert into items(`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)"
-	 + " values (?, ?, ?, ?, ?)";
+	
+	 String query = " insert into researchmanagement(`researchId`,`researcheName`,`researchInstitute`,`researchDuration`,`researchDescription`)" + " values (?, ?, ?, ?, ?)";
 	 PreparedStatement preparedStmt = con.prepareStatement(query);
+	 
+	 
 	 // binding values
+	 
 	 preparedStmt.setInt(1, 0);
-	 preparedStmt.setString(2, code);
-	 preparedStmt.setString(3, name);
-	 preparedStmt.setDouble(4, Double.parseDouble(price));
-	 preparedStmt.setString(5, desc);
+	 preparedStmt.setString(2, name);
+	 preparedStmt.setString(3, institute);
+	 preparedStmt.setString(4, duration);
+	 preparedStmt.setString(5, description);
+
 	// execute the statement
 	 preparedStmt.execute();
 	 con.close();
@@ -49,7 +56,7 @@ public class Research {
 	 }
 	 return output;
 	 }
-	public String readItems()
+	public String readResearch()
 	 {
 	 String output = "";
 	 try
@@ -57,37 +64,52 @@ public class Research {
 	 Connection con = connect();
 	 if (con == null)
 	 {return "Error while connecting to the database for reading."; }
+	 
+	 
 	 // Prepare the html table to be displayed
-	 output = "<table border='1'><tr><th>Item Code</th><th>Item Name</th>" +
-	 "<th>Item Price</th>" +
-	 "<th>Item Description</th>" +
+	 
+	 output = "<table border='1'><tr><th>Research Name</th>" +
+	 "<th>Research Institute</th>" +
+	 "<th>Research Duration</th>" +
+	 "<th>Research Description</th>" +
 	 "<th>Update</th><th>Remove</th></tr>";
 
-	 String query = "select * from items";
+	 String query = "select * from researchmanagement";
 	 Statement stmt = con.createStatement();
 	 ResultSet rs = stmt.executeQuery(query);
+	 
+	 
 	 // iterate through the rows in the result set
+	 
 	 while (rs.next())
 	 {
-	 String itemID = Integer.toString(rs.getInt("itemID"));
-	 String itemCode = rs.getString("itemCode");
-	 String itemName = rs.getString("itemName");
-	 String itemPrice = Double.toString(rs.getDouble("itemPrice"));
-	 String itemDesc = rs.getString("itemDesc");
+	 String researchID = Integer.toString(rs.getInt("researchId"));
+	 String researcheName = rs.getString("researcheName");
+	 String researchInstitute = rs.getString("researchInstitute");
+	 String researchDuration = Double.toString(rs.getDouble("researchDuration"));
+	 String researchDescription = rs.getString("researchDescription");
+	 
+	 
 	 // Add into the html table
-	 output += "<tr><td>" + itemCode + "</td>";
-	 output += "<td>" + itemName + "</td>";
-	 output += "<td>" + itemPrice + "</td>";
-	 output += "<td>" + itemDesc + "</td>";
+	 
+	 output += "<tr><td>" + researcheName + "</td>";
+	 output += "<td>" + researchInstitute + "</td>";
+	 output += "<td>" + researchDuration + "</td>";
+	 output += "<td>" + researchDescription + "</td>";
+	 
 	 // buttons
 	 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
 	 + "<td><form method='post' action='items.jsp'>"
 	 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-	 + "<input name='itemID' type='hidden' value='" + itemID
+	 + "<input name='itemID' type='hidden' value='" + researchID
 	 + "'>" + "</form></td></tr>";
 	 }
 	 con.close();
+	 
+	 
 	 // Complete the html table
+	 
+	 
 	 output += "</table>";
 	 }
 	 catch (Exception e)
@@ -97,7 +119,7 @@ public class Research {
 	 }
 	 return output;
 	 }
-	public String updateItem(String ID, String code, String name, String price, String desc)
+	public String updateItem(String ID, String name, String institute, String duration, String description)
 
 	 {
 	 String output = "";
@@ -106,16 +128,23 @@ public class Research {
 	 Connection con = connect();
 	 if (con == null)
 	 {return "Error while connecting to the database for updating."; }
+	 
+	 
 	 // create a prepared statement
-	 String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=?WHERE itemID=?";
+	 
+	 String query = "UPDATE researchmanagement SET researcheName=?,researchInstitute=?,researchDuration=?,researchDescription=?WHERE researchID=?";
 	 PreparedStatement preparedStmt = con.prepareStatement(query);
+	 
 	 // binding values
-	 preparedStmt.setString(1, code);
-	 preparedStmt.setString(2, name);
-	 preparedStmt.setDouble(3, Double.parseDouble(price));
-	 preparedStmt.setString(4, desc);
+	 
+	 preparedStmt.setString(1, name);
+	 preparedStmt.setString(2, institute);
+	 preparedStmt.setString(3, duration);
+	 preparedStmt.setString(4, description);
 	 preparedStmt.setInt(5, Integer.parseInt(ID));
+	 
 	 // execute the statement
+	 
 	 preparedStmt.execute();
 	 con.close();
 	 output = "Updated successfully";
@@ -128,7 +157,7 @@ public class Research {
 	 return output;
 	 }
 	
-	public String deleteItem(String itemID)
+	public String deleteResearch(String researchID)
 	 {
 	 String output = "";
 	 try
@@ -136,12 +165,18 @@ public class Research {
 	 Connection con = connect();
 	 if (con == null)
 	 {return "Error while connecting to the database for deleting."; }
+	 
 	 // create a prepared statement
-	 String query = "delete from items where itemID=?";
+	 
+	 String query = "delete from researchmanagement where researchId=?";
 	 PreparedStatement preparedStmt = con.prepareStatement(query);
+	 
 	 // binding values
-	 preparedStmt.setInt(1, Integer.parseInt(itemID));
+	 
+	 preparedStmt.setInt(1, Integer.parseInt(researchID));
+	 
 	 // execute the statement
+	 
 	 preparedStmt.execute();
 	 con.close();
 	 output = "Deleted successfully";
