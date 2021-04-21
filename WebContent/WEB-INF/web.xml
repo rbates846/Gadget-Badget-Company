@@ -3,24 +3,18 @@
   <display-name>Gadget Badget Company</display-name>
 
 <servlet>
- <servlet-name>Jersey Web Application</servlet-name>
- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
- <load-on-startup>1</load-on-startup>
+<servlet-name>Jersey Web Application</servlet-name>
+<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+<load-on-startup>1</load-on-startup>
 </servlet>
 <servlet-mapping>
- <servlet-name>Jersey Web Application</servlet-name>
-<<<<<<< HEAD
+<servlet-name>Jersey Web Application</servlet-name>
+<url-pattern>/ResearchService/*</url-pattern>
 <url-pattern>/ProjectService/*</url-pattern>
-
-
-=======
-
- <url-pattern>/ProjectService/*</url-pattern>
-
- <url-pattern>/ResearchService/*</url-pattern>
->>>>>>> branch 'master' of https://github.com/rbates846/Gadget-Badget-Company.git
-
 </servlet-mapping>
+
+
+
 
 
 
