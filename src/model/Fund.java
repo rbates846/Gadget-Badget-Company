@@ -132,7 +132,7 @@ public class Fund {
 	 // create a prepared statement
 	 String query = "UPDATE fund SET funderName=?,fundResearch=?,paymentType=?,fundAmount=?,fundDesc=? WHERE fundID=?";
 	 PreparedStatement preparedStmt = con.prepareStatement(query);
-	 // binding values
+	 // binding values with database
 	 
 	 	preparedStmt.setString(1, name);
 	 	preparedStmt.setString(2, research);
