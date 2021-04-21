@@ -11,8 +11,17 @@
 </servlet>
 <servlet-mapping>
  <servlet-name>Jersey Web Application</servlet-name>
+<url-pattern>/ProjectService/*</url-pattern>
  <url-pattern>/ResearchService/*</url-pattern>
+
  <url-pattern>/FundService/*</url-pattern>
+
+ <url-pattern>/BuyerService/*</url-pattern>
+
+
+ <url-pattern>/BuyerService/*</url-pattern>
+
+
 </servlet-mapping>
 
 

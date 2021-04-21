@@ -14,6 +14,7 @@ import model.Research;
 public class ReasearchManagement {
 
 	
+
 	Research researchObj = new Research();
 	@GET
 	@Path("/")
@@ -23,5 +24,6 @@ public class ReasearchManagement {
 		return researchObj.readResearch();
 	 } 
 	
+
 
 }
