@@ -36,7 +36,7 @@ public class Research {
 	 PreparedStatement preparedStmt = con.prepareStatement(query);
 	 
 	 
-	 // binding values with database new
+	 // binding values with database
 	 
 	 preparedStmt.setInt(1, 0);
 	 preparedStmt.setString(2, name);
