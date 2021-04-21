@@ -28,7 +28,7 @@ public class Buyer {
 			return con;
 		}
 		
-//insert	
+//--------------insert---------------	
 		public String insertBuyers(String buyerID, String name, String address, int phone, String email, String projectName)
 		 {
 		 String output = "";
@@ -63,7 +63,7 @@ public class Buyer {
 		 return output;
 		 }
 		
-//read	
+//--------------read-------------	
 		public String readBuyers()
 		 {
 		 String output = "";
@@ -118,7 +118,7 @@ public class Buyer {
 		 return output;
 		 }
 		
-//update		
+//--------------update-------------		
 		public String updateBuyers(String bno, String buyerID,  String name, String address, int phone, String email, String projectName )
 		{
 			 String output = "";
@@ -151,7 +151,7 @@ public class Buyer {
 			 return output;
 			 } 
 		
-//delete
+//----------delete-----------------
 		
 		public String deleteBuyers(String bno)
 		 {
@@ -179,185 +179,6 @@ public class Buyer {
 		 return output;
 		 } 
 }
-	/*	public String insertBuyer(String buyerID, String name, String address, int phone, String email, String projectName)
-		{
-			String output = "";
-			
-			try
-			{
-			Connection con = connect();
-			if (con == null)
-			{
-				return "Error while connecting to the database";
-			}
-			
-			//create a prepared statement
-			String query = "insert into buyers('bno','buyerID','name','address','phone','email','projectName')" + "values(?,?,?,?,?,?,?))";
-			
-			PreparedStatement preparedStmt = con.prepareStatement(query);
-			
-			//binding values
-			preparedStmt.setInt(1, 0);
-			preparedStmt.setString(2, buyerID);
-			preparedStmt.setString(3, name);
-			preparedStmt.setString(4, address);
-			preparedStmt.setInt(5, phone);
-			preparedStmt.setString(6, email);
-			preparedStmt.setString(7, projectName);
-
-
-			//execute the statement
-			preparedStmt.execute();
-			con.close();
-			
-			output = "Inserted Successfully";
-			}
-			catch (Exception e)
-			{
-				output = "Error while inserting the Buyer details." ;
-				System.err.println(e.getMessage());
-			}
-			return output;
-			
-		}
-		
-		public String readBuyers()
-		{ 
-		 String output = ""; 
-		try
-		 { 
-		 Connection con = connect(); 
-		 if (con == null) 
-		 { 
-		 return "Error while connecting to the database for reading."; 
-		 } 
-		 // Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>BuyerID</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th><th>ProjectName</th></tr>";
-
-		 
-		 String query = "select * from Buyers"; 
-		 Statement stmt = con.createStatement(); 
-		 ResultSet rs = stmt.executeQuery(query); 
-		 
-		 // iterate through the rows in the result set
-		 while (rs.next()) 
-		 { 
-		 String bno = Integer.toString(rs.getInt("bno")); 
-		 String buyerID = rs.getString("buyerID"); 
-		 String name = rs.getString("name"); 
-		 String address = rs.getString("address"); 
-		 String phone = Integer.toString(rs.getInt("phone"));
-		 String email = rs.getString("email");
-		 String projectName = rs.getString("projectName");
-
-		 
-		 // Add a row into the html table
-		 output += "<tr><td>" + buyerID + "</td>"; 
-		 output += "<td>" + name + "</td>"; 
-		 output += "<td>" + address + "</td>"; 
-		 output += "<td>" + phone + "</td>";
-		 output += "<td>" + email + "</td>";
-		 output += "<td>" + projectName + "</td>";
-
-		 
-		 
-		 // buttons
-		 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>"
-		 + "<td><form method='post' action='items.jsp'>"
-		 + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
-		 + "<input name='buyerID' type='hidden' value='" + buyerID + "'>" 
-		 + "</form></td></tr>"; 
-		 } 
-		 con.close(); 
-		 
-		 // Complete the html table
-		 output += "</table>"; 
-		 } 
-		catch (Exception e) 
-		 { 
-		 output = "Error while reading the buyers."; 
-		 System.err.println(e.getMessage()); 
-		 } 
-		return output; 
-		}
-		
-		public String updateItem(String bno, String buyerID, String name, String address, int phone, String email, String password, String projectName)
-		{
-		 String output = "";
-		 try
-		 {
-		 Connection con = connect();
-		 
-		if (con == null)
-		 {
-			return "Error while connecting to the database for updating.";
-		 }
-
-		 // create a prepared statement
-		 String query = "UPDATE Buyers SET buyerID=?,name=?,address=?,phone=?,email=?,password=?,projectName=? WHERE buyerID=?" ;
-
-		 PreparedStatement preparedStmt = con.prepareStatement(query);
-
-		 // binding values
-		 preparedStmt.setInt(1, Integer.parseInt(bno));
-			preparedStmt.setString(2, buyerID);
-			preparedStmt.setString(3, name);
-			preparedStmt.setString(4, address);
-			preparedStmt.setInt(5, phone);
-			preparedStmt.setString(6, email);
-			preparedStmt.setString(7, projectName);
-			
-
-		 // execute the statement
-		 preparedStmt.execute();
-		 con.close();
-
-		 output = "Updated successfully";
-		 }
-
-		 catch (Exception e)
-		 {
-		 output = "Error while updating the buyer details.";
-		 System.err.println(e.getMessage());
-		 }
-
-		 return output;
-		 } 
-		
-		public String deleteItem(String bno)
-		 {
-			 String output = "";
-		 try
-		 {
-			 Connection con = connect();
-
-		 if (con == null)
-		 {
-			return "Error while connecting to the database for deleting."; 
-		 }
-
-		 // create a prepared statement
-		 String query = "delete from buyers where bno=?";
-
-		 PreparedStatement preparedStmt = con.prepareStatement(query);
-
-		 // binding values
-		 preparedStmt.setInt(1, Integer.parseInt(bno));
-
-		 // execute the statement
-		 preparedStmt.execute();
-		 con.close();
-
-		 output = "Deleted successfully";
-		 }
-
-		 catch (Exception e)
-		 {
-		 output = "Error while deleting the buyer details.";
-		 System.err.println(e.getMessage());
-		 }
-
-		 return output;
-		} */
+	
 
 
