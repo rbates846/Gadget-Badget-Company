@@ -2,6 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Gadget Badget Company</display-name>
 
+
+
 <servlet>
  <servlet-name>Jersey Web Application</servlet-name>
  <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
@@ -11,13 +13,15 @@
  <servlet-name>Jersey Web Application</servlet-name>
 <url-pattern>/ProjectService/*</url-pattern>
  <url-pattern>/ResearchService/*</url-pattern>
-<<<<<<< HEAD
- <url-pattern>/BuyerService/*</url-pattern>
-=======
+
+ <url-pattern>/FundService/*</url-pattern>
 
  <url-pattern>/BuyerService/*</url-pattern>
 
->>>>>>> branch 'master' of https://github.com/rbates846/Gadget-Badget-Company
+
+ <url-pattern>/BuyerService/*</url-pattern>
+
+
 </servlet-mapping>
 
 
