@@ -86,7 +86,7 @@ public class Research {
 	 String researchID = Integer.toString(rs.getInt("researchId"));
 	 String researcheName = rs.getString("researcheName");
 	 String researchInstitute = rs.getString("researchInstitute");
-	 String researchDuration = Double.toString(rs.getDouble("researchDuration"));
+	 String researchDuration = rs.getString("researchDuration");
 	 String researchDescription = rs.getString("researchDescription");
 	 
 	 
@@ -101,7 +101,7 @@ public class Research {
 	 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
 	 + "<td><form method='post' action='items.jsp'>"
 	 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-	 + "<input name='itemID' type='hidden' value='" + researchID
+	 + "<input name='researchID' type='hidden' value='" + researchID
 	 + "'>" + "</form></td></tr>";
 	 }
 	 con.close();
@@ -119,7 +119,7 @@ public class Research {
 	 }
 	 return output;
 	 }
-	public String updateItem(String ID, String name, String institute, String duration, String description)
+	public String updateResearch(String ID, String name, String institute, String duration, String description)
 
 	 {
 	 String output = "";
