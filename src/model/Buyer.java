@@ -28,7 +28,7 @@ public class Buyer {
 			return con;
 		}
 		
-//insert	
+//--------------insert---------------	
 		public String insertBuyers(String buyerID, String name, String address, int phone, String email, String projectName)
 		 {
 		 String output = "";
@@ -63,7 +63,7 @@ public class Buyer {
 		 return output;
 		 }
 		
-//read	
+//--------------read-------------	
 		public String readBuyers()
 		 {
 		 String output = "";
@@ -118,7 +118,7 @@ public class Buyer {
 		 return output;
 		 }
 		
-//update		
+//--------------update-------------		
 		public String updateBuyers(String bno, String buyerID,  String name, String address, int phone, String email, String projectName )
 		{
 			 String output = "";
@@ -151,7 +151,7 @@ public class Buyer {
 			 return output;
 			 } 
 		
-//delete
+//----------delete-----------------
 		
 		public String deleteBuyers(String bno)
 		 {
