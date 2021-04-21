@@ -1,13 +1,10 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Project {
 	
+	//A common method to connect to the DB
 	private Connection connect() 
 	 { 
 	 Connection con = null; 
@@ -19,12 +16,9 @@ public class Project {
 	 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/gadgetbadgetdb", "root", ""); 
 	 } 
 	 catch (Exception e) 
-	 {
-		 e.printStackTrace();
-		 
-	 } 
+	 {e.printStackTrace();} 
 	 return con; 
-	 } 
+	 }
 	
 	public String insertProject(String code, String name, String price, String desc) 
 	 { 
@@ -33,58 +27,39 @@ public class Project {
 	 { 
 	 Connection con = connect(); 
 	 if (con == null) 
-	 {
-		 return "Error while connecting to the database for inserting."; 
-		 
-	 } 
-	 
+	 {return "Error while connecting to the database for inserting."; } 
 	 // create a prepared statement
-	 String query = " insert into project(`projectId`,`projectCode`,`projectName`,`projectPrice`,`projectDescription`)"+ " values (?, ?, ?, ?, ?)";
-	 
+	 String query = " insert into project(`projectId`,`projectCode`,`projectName`,`projectPrice`,`projectDescription`) values (?, ?, ?, ?, ?)"; 
 	 PreparedStatement preparedStmt = con.prepareStatement(query); 
-	 
-	 
 	 // binding values
 	 preparedStmt.setInt(1, 0); 
 	 preparedStmt.setString(2, code); 
 	 preparedStmt.setString(3, name); 
-	 preparedStmt.setDouble(3, Double.parseDouble(price)); 
+	 preparedStmt.setDouble(4, Double.parseDouble(price)); 
 	 preparedStmt.setString(5, desc); 
-	 
-	 
 	// execute the statement
 	 
 	 preparedStmt.execute(); 
 	 con.close(); 
 	 output = "Inserted successfully"; 
 	 } 
-	 
 	 catch (Exception e) 
 	 { 
 	 output = "Error while inserting the project."; 
 	 System.err.println(e.getMessage()); 
 	 } 
-	 
 	 return output; 
-	 
 	 } 
 	public String readProject() 
 	 { 
-		String output = ""; 
-		
+	 String output = ""; 
 	 try
 	 { 
-		 Connection con = connect(); 
-		 
+	 Connection con = connect(); 
 	 if (con == null) 
-	 {
-		 return "Error while connecting to the database for reading."; 
-		 
-	 } 
-	 
-	 
+	 {return "Error while connecting to the database for reading."; } 
 	 // Prepare the html table to be displayed
-	 output = "<table border='1'><tr><th>Project Code</th>"+"<th>Project Name</th>" +
+	 output = "<table border='1'><tr><th>Project Code</th><th>Project Name</th>" +
 	 "<th>Project Price</th>" + 
 	 "<th>Project Description</th>" +
 	 "<th>Update</th><th>Remove</th></tr>"; 
@@ -106,10 +81,10 @@ public class Project {
 	 output += "<td>" + projectPrice + "</td>"; 
 	 output += "<td>" + projectDescription + "</td>"; 
 	 // buttons
-	 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>"
-	 + "<td><form method='post' action='project.jsp'>"
-	 + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
-	 + "<input name='itemID' type='hidden' value='" + projectId 
+	 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
+	 + "<td><form method='post' action='items.jsp'>"
+	 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
+	 + "<input name='projectId' type='hidden' value='" + projectId 
 	 + "'>" + "</form></td></tr>"; 
 	 } 
 	 con.close(); 
@@ -123,7 +98,6 @@ public class Project {
 	 } 
 	 return output; 
 	 } 
-	
 	public String updateProject(String ID, String code, String name, String price, String desc)
 	
 	{ 
@@ -133,21 +107,15 @@ public class Project {
 		 Connection con = connect(); 
 		 if (con == null) 
 		 {return "Error while connecting to the database for updating."; } 
-		 
-		 
 		 // create a prepared statement
 		 String query = "UPDATE project SET projectCode=?,projectName=?,projectPrice=?,projectDescription=? WHERE projectId=?"; 
 		 PreparedStatement preparedStmt = con.prepareStatement(query); 
-		 
-		 
 		 // binding values
 		 preparedStmt.setString(1, code); 
 		 preparedStmt.setString(2, name); 
 		 preparedStmt.setDouble(3, Double.parseDouble(price)); 
 		 preparedStmt.setString(4, desc); 
 		 preparedStmt.setInt(5, Integer.parseInt(ID)); 
-		 
-		 
 		 // execute the statement
 		 preparedStmt.execute(); 
 		 con.close(); 
@@ -160,7 +128,9 @@ public class Project {
 		 } 
 		 return output; 
 		 } 
-		public String deleteItem(String projectId) 
+	
+	
+		public String deleteProject(String projectId) 
 		 { 
 		 String output = ""; 
 		 try
@@ -168,17 +138,11 @@ public class Project {
 		 Connection con = connect(); 
 		 if (con == null) 
 		 {return "Error while connecting to the database for deleting."; } 
-		 
-		 
 		 // create a prepared statement
 		 String query = "delete from project where projectId=?"; 
 		 PreparedStatement preparedStmt = con.prepareStatement(query); 
-		 
-		 
 		 // binding values
 		 preparedStmt.setInt(1, Integer.parseInt(projectId)); 
-		 
-		 
 		 // execute the statement
 		 preparedStmt.execute(); 
 		 con.close(); 
@@ -186,12 +150,10 @@ public class Project {
 		 } 
 		 catch (Exception e) 
 		 { 
-		 output = "Error while deleting the item."; 
+		 output = "Error while deleting the project."; 
 		 System.err.println(e.getMessage()); 
 		 } 
 		 return output; 
 		 } 
-		
-	
 }
 

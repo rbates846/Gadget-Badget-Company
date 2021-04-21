@@ -5,22 +5,11 @@
 
 
 <servlet>
- <servlet-name>Jersey Web Application</servlet-name>
- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
- <load-on-startup>1</load-on-startup>
+<servlet-name>Jersey Web Application</servlet-name>
+<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+<load-on-startup>1</load-on-startup>
 </servlet>
 <servlet-mapping>
- <servlet-name>Jersey Web Application</servlet-name>
-<url-pattern>/ProjectService/*</url-pattern>
- <url-pattern>/ResearchService/*</url-pattern>
-
- <url-pattern>/FundService/*</url-pattern>
-
-
- <url-pattern>/BuyerService/*</url-pattern>
-
-
-</servlet-mapping>
 
 
 
