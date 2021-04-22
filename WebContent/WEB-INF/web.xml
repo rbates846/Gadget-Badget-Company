@@ -13,6 +13,7 @@
 <servlet-name>Jersey Web Application</servlet-name>
 <url-pattern>/ResearchService/*</url-pattern>
 <url-pattern>/ProjectService/*</url-pattern>
+<url-pattern>/FundService/*</url-pattern>
 </servlet-mapping>
 
 

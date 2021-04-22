@@ -33,9 +33,10 @@ public class FundManagement {
 	 @FormParam("fundResearch") String research,
 	 @FormParam("paymentType") String type,
 	 @FormParam("fundAmount") String amount,
-	 @FormParam("fundDesc") String  Desc)
+	 @FormParam("fundDesc") String  Desc,
+	 @FormParam("fundDate") String  date)
 	{
-	 String output = FundObj.insertFund(name,research,type,amount,Desc);
+	 String output = FundObj.insertFund(name,research,type,amount,Desc,date);
 	return output;
 	}
 	
@@ -54,7 +55,8 @@ public class FundManagement {
 	 String paymentType = fundObject.get("paymentType").getAsString();
 	 String fundAmount = fundObject.get("fundAmount").getAsString();
 	 String fundDesc = fundObject.get("fundDesc").getAsString();
-	 String output = FundObj.updateFund( fundID, funderName, fundResearch, paymentType, fundAmount, fundDesc);
+	 String fundDate = fundObject.get("fundDate").getAsString();
+	 String output = FundObj.updateFund( fundID, funderName, fundResearch, paymentType, fundAmount, fundDesc,fundDate);
 	return output;
 	}
 	
