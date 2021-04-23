@@ -72,7 +72,7 @@ public class ReasearchManagement {
 	return output;
 	}
 	
-	//--------DELETE--------
+	//--------DELETE-------
 	
 	@DELETE
 	@Path("/")
