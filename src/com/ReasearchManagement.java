@@ -49,7 +49,7 @@ public class ReasearchManagement {
 	return output;
 	}
 	
-	//--------UPDATE--------
+	//--------UPDATE---------
 	
 	@PUT
 	@Path("/")
