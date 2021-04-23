@@ -120,7 +120,7 @@ public class Fund {
 	 	return output;
 	 } 
 	
-//--------------------------------------Update-----------------------------------------------------------
+//--------------------------------------Update------------------------------------------------------------
 	
 	public String updateFund(String ID,String name, String research, String type, String amount, String Desc, String date)
 	
