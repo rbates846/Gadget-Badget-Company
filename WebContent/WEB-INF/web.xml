@@ -14,7 +14,6 @@
 <url-pattern>/ResearchService/*</url-pattern>
 <url-pattern>/ProjectService/*</url-pattern>
 
-<url-pattern>/BuyerService/*</url-pattern>
 </servlet-mapping>
 
 

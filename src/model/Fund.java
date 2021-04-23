@@ -24,7 +24,7 @@ public class Fund {
 
 //------------------------------------------------Insert---------------------------------------------------------
 	
-	public String insertFund(String name, String research, String type, String amount,String desc)
+	public String insertFund(String name, String research, String type, String amount,String desc,String date)
 	 {
 		String output = "";
 	 try
@@ -35,8 +35,8 @@ public class Fund {
 		 return "Error while connecting to the database for inserting."; 
 	 }
 	 // create a prepared statement
-	 	String query = " insert into fund(`fundID`,`funderName`,`fundResearch`,`paymentType`,`fundAmount`,`fundDesc`)"
-	 			+ " values (?, ?, ?, ?, ?, ?)";
+	 	String query = " insert into fund(`fundID`,`funderName`,`fundResearch`,`paymentType`,`fundAmount`,`fundDesc`,`fundDate`)"
+	 			+ " values (?, ?, ?, ?, ?, ?, ?)";
 	 	PreparedStatement preparedStmt = con.prepareStatement(query);
 	 	// binding values
 	 	preparedStmt.setInt(1, 0);
@@ -45,6 +45,7 @@ public class Fund {
 	 	preparedStmt.setString(4, type);
 	 	preparedStmt.setDouble(5, Double.parseDouble(amount));
 	 	preparedStmt.setString(6, desc);
+	 	preparedStmt.setString(7, date);
 	 	// execute the statement
 
 	 	preparedStmt.execute();
@@ -76,6 +77,7 @@ public class Fund {
 	 			"<th>Payment Type</th>" +
 	 			"<th>Amount</th>" +
 	 			"<th>Description</th>" +
+	 			"<th>Date</th>" +
 	 			"<th>Update</th><th>Remove</th></tr>";
 
 	 	String query = "select * from fund";
@@ -90,6 +92,7 @@ public class Fund {
 		 String paymentType = rs.getString("paymentType");
 		 String fundAmount = Double.toString(rs.getDouble("fundAmount"));
 		 String fundDesc = rs.getString("fundDesc");
+		 String fundDate = rs.getString("fundDate");
 		 
 		 // Add into the html table
 		 output += "<tr><td>" + funderName + "</td>";
@@ -97,11 +100,12 @@ public class Fund {
 		 output += "<td>" + paymentType + "</td>";
 		 output += "<td>" + fundAmount + "</td>";
 		 output += "<td>" + fundDesc + "</td>";
+		 output += "<td>" + fundDate + "</td>";
 		 // buttons
 		 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
 	 + "<td><form method='post' action=''>"
 	 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-	 + "<input name='itemID' type='hidden' value='" + fundID
+	 + "<input name='fundID' type='hidden' value='" + fundID
 	 + "'>" + "</form></td></tr>";
 	 }
 	 con.close();
@@ -118,7 +122,7 @@ public class Fund {
 	
 //--------------------------------------Update--------------------------------------------
 	
-	public String updateFund(String ID,String name, String research, String type, String amount, String Desc)
+	public String updateFund(String ID,String name, String research, String type, String amount, String Desc, String date)
 	
 	 {
 		String output = "";
@@ -130,7 +134,7 @@ public class Fund {
 		 return "Error while connecting to the database for updating."; 
 		 }
 	 // create a prepared statement
-	 String query = "UPDATE fund SET funderName=?,fundResearch=?,paymentType=?,fundAmount=?,fundDesc=? WHERE fundID=?";
+	 String query = "UPDATE fund SET funderName=?,fundResearch=?,paymentType=?,fundAmount=?,fundDesc=?,fundDate=? WHERE fundID=?";
 	 PreparedStatement preparedStmt = con.prepareStatement(query);
 	 // binding values with database
 	 
@@ -139,7 +143,8 @@ public class Fund {
 	 	preparedStmt.setString(3, type);
 	 	preparedStmt.setDouble(4, Double.parseDouble(amount)); 
 	 	preparedStmt.setString(5, Desc);
-	 	preparedStmt.setInt(6, Integer.parseInt(ID)); 
+	 	preparedStmt.setString(6, date);
+	 	preparedStmt.setInt(7, Integer.parseInt(ID)); 
 	 	// execute the statement
 	 	preparedStmt.execute();
 	 	con.close();
