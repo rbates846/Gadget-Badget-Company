@@ -141,9 +141,11 @@ public class Project {
 		 Connection con = connect(); 
 		 if (con == null) 
 		 {return "Error while connecting to the database for deleting."; } 
+		 
 		 // create a prepared statement
 		 String query = "delete from project where projectId=?"; 
 		 PreparedStatement preparedStmt = con.prepareStatement(query); 
+		 
 		 // binding values
 		 preparedStmt.setInt(1, Integer.parseInt(projectId)); 
 		 // execute the statement
