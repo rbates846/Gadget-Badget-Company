@@ -34,7 +34,7 @@ public class ReasearchManagement {
 	 } 
 	
 
-	//--------INSERT--------
+	//--------INSERT---------
 	
 	@POST
 	@Path("/")
