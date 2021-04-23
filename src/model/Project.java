@@ -107,15 +107,18 @@ public class Project {
 		 Connection con = connect(); 
 		 if (con == null) 
 		 {return "Error while connecting to the database for updating."; } 
+		 
 		 // create a prepared statement
 		 String query = "UPDATE project SET projectCode=?,projectName=?,projectPrice=?,projectDescription=? WHERE projectId=?"; 
 		 PreparedStatement preparedStmt = con.prepareStatement(query); 
+		 
 		 // binding values
 		 preparedStmt.setString(1, code); 
 		 preparedStmt.setString(2, name); 
 		 preparedStmt.setDouble(3, Double.parseDouble(price)); 
 		 preparedStmt.setString(4, desc); 
 		 preparedStmt.setInt(5, Integer.parseInt(ID)); 
+		 
 		 // execute the statement
 		 preparedStmt.execute(); 
 		 con.close(); 
