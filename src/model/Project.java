@@ -28,17 +28,21 @@ public class Project {
 	 Connection con = connect(); 
 	 if (con == null) 
 	 {return "Error while connecting to the database for inserting."; } 
+	 
+	 
 	 // create a prepared statement
 	 String query = " insert into project(`projectId`,`projectCode`,`projectName`,`projectPrice`,`projectDescription`) values (?, ?, ?, ?, ?)"; 
 	 PreparedStatement preparedStmt = con.prepareStatement(query); 
+	 
+	 
 	 // binding values
 	 preparedStmt.setInt(1, 0); 
 	 preparedStmt.setString(2, code); 
 	 preparedStmt.setString(3, name); 
 	 preparedStmt.setDouble(4, Double.parseDouble(price)); 
 	 preparedStmt.setString(5, desc); 
-	// execute the statement
 	 
+	// execute the statement
 	 preparedStmt.execute(); 
 	 con.close(); 
 	 output = "Inserted successfully"; 
@@ -58,6 +62,8 @@ public class Project {
 	 Connection con = connect(); 
 	 if (con == null) 
 	 {return "Error while connecting to the database for reading."; } 
+	 
+	 
 	 // Prepare the html table to be displayed
 	 output = "<table border='1'><tr><th>Project Code</th><th>Project Name</th>" +
 	 "<th>Project Price</th>" + 
@@ -67,6 +73,8 @@ public class Project {
 	 String query = "select * from project"; 
 	 Statement stmt = con.createStatement(); 
 	 ResultSet rs = stmt.executeQuery(query); 
+	 
+	 
 	 // iterate through the rows in the result set
 	 while (rs.next()) 
 	 { 
@@ -75,11 +83,15 @@ public class Project {
 	 String projectName = rs.getString("projectName"); 
 	 String projectPrice = Double.toString(rs.getDouble("projectPrice")); 
 	 String projectDescription = rs.getString("projectDescription"); 
+	 
+	 
 	 // Add into the html table
 	 output += "<tr><td>" + projectCode + "</td>"; 
 	 output += "<td>" + projectName + "</td>"; 
 	 output += "<td>" + projectPrice + "</td>"; 
 	 output += "<td>" + projectDescription + "</td>"; 
+	 
+	 
 	 // buttons
 	 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
 	 + "<td><form method='post' action='items.jsp'>"
@@ -88,6 +100,9 @@ public class Project {
 	 + "'>" + "</form></td></tr>"; 
 	 } 
 	 con.close(); 
+	 
+	 
+	 
 	 // Complete the html table
 	 output += "</table>"; 
 	 } 
