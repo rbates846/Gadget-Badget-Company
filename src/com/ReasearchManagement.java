@@ -34,7 +34,7 @@ public class ReasearchManagement {
 	 } 
 	
 
-	//--------INSERT--------
+	//---------INSERT----------
 	
 	@POST
 	@Path("/")
@@ -49,7 +49,7 @@ public class ReasearchManagement {
 	return output;
 	}
 	
-	//--------UPDATE--------
+	//--------UPDATE---------
 	
 	@PUT
 	@Path("/")
@@ -72,7 +72,7 @@ public class ReasearchManagement {
 	return output;
 	}
 	
-	//--------DELETE--------
+	//--------DELETE----------
 	
 	@DELETE
 	@Path("/")
