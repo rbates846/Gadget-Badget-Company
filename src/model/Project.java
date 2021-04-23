@@ -148,6 +148,7 @@ public class Project {
 		 
 		 // binding values
 		 preparedStmt.setInt(1, Integer.parseInt(projectId)); 
+		 
 		 // execute the statement
 		 preparedStmt.execute(); 
 		 con.close(); 
