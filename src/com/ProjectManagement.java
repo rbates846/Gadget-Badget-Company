@@ -26,6 +26,9 @@ public class ProjectManagement {
 
 	Project projectObj = new Project(); 
 	
+	
+	//----------post------------
+	
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
@@ -35,7 +38,7 @@ public class ProjectManagement {
 	 }
 	
 	
-	
+	//----------post------------
 	
 	@POST
 	@Path("/") 
@@ -48,7 +51,7 @@ public class ProjectManagement {
 	}
 	
 	
-	
+	//----------put------------
 	
 	@PUT
 	@Path("/") 
@@ -72,7 +75,7 @@ public class ProjectManagement {
 	 return output; 
 	}
 	
-	
+	//----------delete------------
 	
 	@DELETE
 	@Path("/") 
