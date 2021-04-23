@@ -28,7 +28,7 @@ public class Buyer {
 			return con;
 		}
 		
-//--------------insert---------------	
+//--------------insert------------------	
 		public String insertBuyers(String buyerID, String name, String address, int phone, String email, String projectName)
 		 {
 		 String output = "";
