@@ -30,6 +30,8 @@ public class Project {
 	 {return "Error while connecting to the database for inserting."; } 
 	 
 	 
+	 //------------INSERT------------
+	 
 	 // create a prepared statement
 	 String query = " insert into project(`projectId`,`projectCode`,`projectName`,`projectPrice`,`projectDescription`) values (?, ?, ?, ?, ?)"; 
 	 PreparedStatement preparedStmt = con.prepareStatement(query); 
@@ -123,6 +125,10 @@ public class Project {
 		 if (con == null) 
 		 {return "Error while connecting to the database for updating."; } 
 		 
+		 
+		 //--------------UPDATE------------
+		 
+		 
 		 // create a prepared statement
 		 String query = "UPDATE project SET projectCode=?,projectName=?,projectPrice=?,projectDescription=? WHERE projectId=?"; 
 		 PreparedStatement preparedStmt = con.prepareStatement(query); 
@@ -156,6 +162,10 @@ public class Project {
 		 Connection con = connect(); 
 		 if (con == null) 
 		 {return "Error while connecting to the database for deleting."; } 
+		 
+		 
+		 //------------DELETE------------
+		 
 		 
 		 // create a prepared statement
 		 String query = "delete from project where projectId=?"; 
