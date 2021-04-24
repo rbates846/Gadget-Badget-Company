@@ -7,9 +7,11 @@ public class Project {
 	//A common method to connect to the DB
 	private Connection connect() 
 	 { 
+		
 	 Connection con = null; 
 	 try
 	 { 
+		 
 	 Class.forName("com.mysql.jdbc.Driver"); 
 	 
 	 //Provide the correct details: DBServer/DBName, username, password 
