@@ -69,7 +69,7 @@ Buyer buyerObj = new Buyer();
 	return output;
 	}
 	
-	
+	//delete
 	@DELETE
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)
