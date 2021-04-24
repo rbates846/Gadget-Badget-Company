@@ -47,7 +47,7 @@ Buyer buyerObj = new Buyer();
 	 String output = buyerObj.insertBuyers(buyerID, name, address, phone, email, projectName);
 	return output;
 	}
-
+	//update
 	@PUT
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
