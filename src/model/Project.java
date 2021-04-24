@@ -51,11 +51,16 @@ public class Project {
 	 } 
 	 catch (Exception e) 
 	 { 
+		 
 	 output = "Error while inserting the project."; 
 	 System.err.println(e.getMessage()); 
+	 
 	 } 
+	 
 	 return output; 
+	 
 	 } 
+	
 	public String readProject() 
 	 { 
 	 String output = ""; 
