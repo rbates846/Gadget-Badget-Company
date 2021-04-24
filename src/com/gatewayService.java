@@ -1,6 +1,5 @@
 package com;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,25 +11,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
- @Path("/home")
+@Path("/home")
 
 public class gatewayService {
 
-	//Read API
+	// Read API
 	@GET
 	@Path("/research")
 	@Produces(MediaType.TEXT_HTML)
-	public String getDoctorDetails() throws IOException
-	{
+	public String getDoctorDetails() throws IOException {
 		URL obj = new URL("http://localhost:8080/GadgetBadgetCompany/ResearchService/research");
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
 		int responseCode = con.getResponseCode();
 		System.out.println("GET Response Code :: " + responseCode);
-					
+
 		if (responseCode == HttpURLConnection.HTTP_OK) { // success
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					con.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
 
@@ -46,22 +43,20 @@ public class gatewayService {
 			return "GET request not worked";
 		}
 	}
-	
-	//Read API
+
+	// Read API
 	@GET
 	@Path("/Fund")
 	@Produces(MediaType.TEXT_HTML)
-	public String getPatientDetails() throws IOException
-	{
+	public String getPatientDetails() throws IOException {
 		URL obj = new URL("http://localhost:8080/GadgetBadgetCompany/FundService/Fund");
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
 		int responseCode = con.getResponseCode();
 		System.out.println("GET Response Code :: " + responseCode);
-					
+
 		if (responseCode == HttpURLConnection.HTTP_OK) { // success
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					con.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
 
@@ -77,22 +72,20 @@ public class gatewayService {
 			return "GET request not worked";
 		}
 	}
-	
-	//Read API
+
+	// Read API
 	@GET
 	@Path("/Buyer")
 	@Produces(MediaType.TEXT_HTML)
-	public String getAppointmentDetails() throws IOException
-	{
+	public String getAppointmentDetails() throws IOException {
 		URL obj = new URL("http://localhost:8080/GadgetBadgetCompany/BuyerService/Buyer");
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
 		int responseCode = con.getResponseCode();
 		System.out.println("GET Response Code :: " + responseCode);
-					
+
 		if (responseCode == HttpURLConnection.HTTP_OK) { // success
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					con.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
 
@@ -108,22 +101,20 @@ public class gatewayService {
 			return "GET request not worked";
 		}
 	}
-	
-	//Read API
+
+	// Read API
 	@GET
 	@Path("/Project")
 	@Produces(MediaType.TEXT_HTML)
-	public String getHospitalDetails() throws IOException
-	{
+	public String getHospitalDetails() throws IOException {
 		URL obj = new URL("http://localhost:8080/GadgetBadgetCompany/ProjectService/Project");
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
 		int responseCode = con.getResponseCode();
 		System.out.println("GET Response Code :: " + responseCode);
-					
+
 		if (responseCode == HttpURLConnection.HTTP_OK) { // success
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					con.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
 
