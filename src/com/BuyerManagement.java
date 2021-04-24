@@ -31,7 +31,7 @@ Buyer buyerObj = new Buyer();
 	{
 		return buyerObj.readBuyers();
 	}
-	
+	//insert
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
