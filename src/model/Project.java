@@ -63,12 +63,17 @@ public class Project {
 	
 	public String readProject() 
 	 { 
+		
 	 String output = ""; 
 	 try
 	 { 
+		 
 	 Connection con = connect(); 
 	 if (con == null) 
-	 {return "Error while connecting to the database for reading."; } 
+	 {
+		 return "Error while connecting to the database for reading.";
+		 
+	 } 
 	 
 	 
 	 // Prepare the html table to be displayed
