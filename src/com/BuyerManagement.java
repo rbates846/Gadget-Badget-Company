@@ -31,7 +31,7 @@ Buyer buyerObj = new Buyer();
 	{
 		return buyerObj.readBuyers();
 	}
-	
+	//insert
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -47,7 +47,7 @@ Buyer buyerObj = new Buyer();
 	 String output = buyerObj.insertBuyers(buyerID, name, address, phone, email, projectName);
 	return output;
 	}
-
+	//update
 	@PUT
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -69,7 +69,7 @@ Buyer buyerObj = new Buyer();
 	return output;
 	}
 	
-	
+	//delete
 	@DELETE
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)

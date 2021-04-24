@@ -15,6 +15,7 @@
 <url-pattern>/ProjectService/*</url-pattern>
 <url-pattern>/FundService/*</url-pattern>
 <url-pattern>/BuyerService/*</url-pattern>
+<url-pattern>/ApiGateWayService/*</url-pattern>
 
 </servlet-mapping>
 
